@@ -5,7 +5,7 @@ import time
 import re
 from concurrent.futures import ProcessPoolExecutor
 
-
+# https://www.cnblogs.com/peng-zhao/p/10221922.html
 def get_data(url):
     print("%s 正在请求%s" % (os.getpid(),url))
     time.sleep(random.randint(1,2))

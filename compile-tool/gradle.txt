@@ -1,3 +1,7 @@
 1. dependencies 里的api 和 implementation区别，本地依赖时，api 类型的可以传递，implementation不能传递，
-从而减少build时间，远程依赖时都能传递
+从而减少build时间，远程依赖时都能传递(transitive dependencies)
+2. gradle plugin: 模块化构建脚本的功能;公共的功能可以抽取出来成为插件，可以供多个 build.gradle 使用，增加复用性。
+3. plugins{} 得是gradle官方插件库有的，如果用第三方插件库就要用apply plugin
+4. buildscript中的声明是gradle脚本自身需要使用的资源。可以声明的资源包括依赖项、第三方插件、maven仓库地址等。
+而在build.gradle文件中直接声明的依赖项、仓库地址等信息是项目自身需要的资源。
 

@@ -1,3 +1,10 @@
 1. scope: compile - 会打包，会传递到依赖的项目中，可以用import引入；provided - 不会打包，也不会传递；
     runtime - 编译时不需要它，也就不能import，可以用反射引用；test - 测试编译和测试运行时可用
     system - 需要提供systemPath 去系统类库找而不去maven仓库找
+2. 版本冲突时的一些规则#
+   当出现版本冲突时，具体使用哪一个版本的优先顺序是
+
+   直接在当前工程中显示指定的版本
+   parent中配置的父工程使用的版本
+   在当前工程中通过dependencyManagement引入的BOM清单中的版本，当引入的多个BOM都有对应jar包时，先引入的BOM生效
+   上述三个地方都没配置，则启用依赖调解dependency mediation

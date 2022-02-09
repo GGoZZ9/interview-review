@@ -6,15 +6,105 @@ import java.util.Set;
 public class Fundamental {
 
 /**
- * Jvm + 核心类库 java.lang等
+ * JVM + 核心类库 java.lang等
  = JRE + 开发工具 java.exe 运行java程序，javac.exe编译生成.class文件
  = JDK
- Java源代码 -> 编译器->jvm可执行的.class文件->jvmj解释器->机器可执行的二进制机器码->程序运行
+ Java源代码 -> 编译器 compiler ->jvm可执行的.class文件->jvmj 解释器 Interpreter ->机器可执行的二进制机器码 Binary machine code ->程序运行
  * */
 
     /**
      * Java 主类 程序执行入口只有一个main方法，Java小程序主类是继承自系统类的JApplet 或Applet类，在浏览器上运行调用init()线程或run()
+     *
+     * 1 Byte 字节 = 8 bit 位 (binary digit)
+     * 1 KB = 1024 Bytes
+     * 1 MB = 1024 KB
+     * 1 GB = 1024 MB
      */
+
+
+    /**
+     * https://www.javatpoint.com/command-line-argument
+     * OOP: Object-Oriented Programming
+     * Inheritance: Inheritance(IS-A), Aggregation(HAS-A)
+     * Polymorphism: Overload, Override, covariant Return type, super, Instance Initializer block, final, Runtime Polymorphism, instanceof operator
+     * Abstraction: Abstract class, Interface
+     * Encapsulation: package, access modifiers
+     * Array
+     *
+     * */
+
+    /**
+     * Connecting a method call to the method body is known as binding.
+     *
+     * */
+
+    /**
+     * abstract class
+     * An abstract class must be declared with an abstract keyword.
+     * It can have abstract and non-abstract methods.
+     * It cannot be instantiated.
+     * It can have constructors and static methods also.
+     * It can have final methods which will force the subclass not to change the body of the method.
+     *
+     * A factory method is a method that returns the instance of the class. We will learn about the factory method later.
+     * */
+
+    /**
+     * No.	Method Overloading	                                                                        Method Overriding
+     * 1)	Method overloading is used to increase the readability of the program.	                    Method overriding is used to provide the specific implementation of the method that is already provided by its super class.
+     * 2)	Method overloading is performed within class.	                                            Method overriding occurs in two classes that have IS-A (inheritance) relationship.
+     * 3)	In case of method overloading, parameter must be different.	                                In case of method overriding, parameter must be same.
+     * 4)	Method overloading is the example of compile time polymorphism.	                            Method overriding is the example of run time polymorphism.
+     * 5)	In java, method overloading can't be performed by changing return type of the method only.  Return type can be same or different in method overloading. But you must have to change the parameter.	Return type must be same or covariant in method overriding.
+     * */
+
+    /**
+     * Member inner class: A non-static class that is created inside a class but outside a method is called member inner class.
+     * OuterClassReference.new MemberInnerClassConstructor();
+     * Anonymous inner class: An anonymous inner class can be useful when making an instance of an object with certain "extras"
+     * such as overloading methods of a class or interface, without having to actually subclass a class.
+     * Local inner class:A class i.e., created inside a method, is called local inner class in java.
+     * static nested class: TestOuter1.Inner obj=new TestOuter1.Inner();
+     * */
+
+    /**
+     * we use multithreading than multiprocessing because threads use a shared memory area.
+     * They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.
+     *
+     * Thread-based Multitasking (Multithreading)
+     * Threads share the same address space.
+     * A thread is lightweight.
+     * Cost of communication between the thread is low.
+     *
+     * Process-based Multitasking (Multiprocessing)
+     * Each process has an address in memory. In other words, each process allocates a separate memory area.
+     * A process is heavyweight.
+     * Cost of communication between the process is high.
+     * Switching from one process to another requires some time for saving and loading registers, memory maps, updating lists, etc.
+     *
+     * thread scheduler to provide the thread time to run, i.e., moving the thread the running state.
+     * A program implementing multithreading acquires a fixed slice of time to each individual thread.
+     *
+     * Synchronization in Java is the capability to control the access of multiple threads to any shared resource.
+     * There are two types of thread synchronization mutual exclusive 互斥通信 and inter-thread communication 线程间通信.
+     *
+     * If you make any static method as synchronized, the lock will be on the class not on object.
+     * */
+
+    /**
+     * Inter-thread communication or Co-operation is all about allowing synchronized threads to communicate with each other.
+     * wait()
+     * notify()
+     * notifyAll()
+     * The notify() method wakes up a single thread that is waiting on this object's monitor
+     * The choice is arbitrary and occurs at the discretion of the implementation.
+     *
+     * wait()	                                                        sleep()
+     * The wait() method releases the lock.	                            The sleep() method doesn't release the lock.
+     * It is a method of Object class	                                It is a method of Thread class
+     * It is the non-static method	                                    It is the static method
+     * It should be notified by notify() or notifyAll() methods	        After the specified amount of time, sleep is completed.
+     * */
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         fun();
     }
@@ -65,29 +155,38 @@ public class Fundamental {
     }
 
 /**
- * float 单精度
- * double 双精度
+ * 包装类型 packing type 基本类型 base type
+ * byte 1B
+ * short 2B
+ * int 4Byte
+ * long 8Byte
+ * float 单精度 4Byte
+ * double 双精度 8Byte
+ * char 2B
  * float f = float(3.4)或者 float f = 3.4F
- *
+ * 更精确的用 BigDecimal
+ * long 整型 64位
+ * 超过64位用 BigInteger内部用一个int[]数组来模拟一个非常大的整数：
  * */
 
 /**
- * private : 在同一类内可见。使用对象：变量、方法
- * protected : 对同一包内的类和所有子类可见。使用对象：变量、方法
+ * private : 在同一类内可见。使用对象：变量、方法 The private keyword is an access modifier used for attributes, methods and constructors,
+ * making them only accessible within the declared class.
+ * protected : 对同一包内的类和所有子类可见。使用对象：变量、方法 making them accessible in the same package and subclasses.
  *
  * default (即缺省，什么也不写）: 在同一包内可见。使用对象：类、接口、变量、方法。
  * public : 对所有类可见。使用对象：类、接口、变量、方法
  * */
 
 /**
- * &&左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。
+ * &&左边的表达式的值是 false，右边的表达式会被直接短路掉 Short-circuit operations ，不会进行运算。
  * */
 
 /**
- * 被final修饰的类不可以被继承, 重写，变量不可改变
- * 被final修饰不可变的是变量的引用，而不是引用指向的内容，引用指向的内容是可以改变的
+ * 被final修饰的类不可以被继承 inherit, 重写 override，变量不可改变 When a variable is declared with final keyword, its value can’t be modified
+ * 被final修饰不可变的是变量的引用 reference，而不是引用指向的内容，引用指向的内容是可以改变的
  *
- * finally一般作用在try-catch代码块中，一定要执行的，一般关闭资源
+ * finally一般作用在try-catch代码块 Code blocks 中，一定要执行的，一般关闭资源
  * finalize是一个方法，属于Object类的一个方法，调用System.gc() 方法的时候，由垃圾回收器调用finalize()，回收垃圾，一个对象是否可回收的最后判断。
  * */
 
@@ -96,11 +195,21 @@ public class Fundamental {
  * 1.普通的直接引用，this相当于是指向当前对象本身。
  * 2.形参与成员名字重名，用this来区分
  * 3.引用本类的构造函数
+ * this can be used to refer current class instance variable.
+ * this can be used to invoke current class method (implicitly)
+ * this() can be used to invoke current class constructor.
+ * this can be passed as an argument in the method call.
+ * this can be passed as argument in the constructor call.
+ * this can be used to return the current class instance from the method.
  *
  * super可以理解为是指向自己超（父）类对象的一个指针，而这个超类指的是离自己最近的一个父类。
- * 1.普通的直接引用：与this类似，super相当于是指向当前对象的父类的引用，这样就可以用super.xxx来引用父类的成员。
- * 2.子类中的成员变量或方法与父类中的成员变量或方法同名时，用super进行区分
+ * The super keyword in Java is a reference variable which is used to refer immediate parent class object.
+ * 1.普通的直接引用：与this类似，super相当于是指向 point to 当前对象的父类 Parent class 的引用，这样就可以用super.xxx来引用父类的成员。
+ * 2.子类中的成员变量 Member variables 或方法与父类中的成员变量或方法同名时，用super进行区分
  * 3.引用父类构造函数 super()
+ * super can be used to refer immediate parent class instance variable.
+ * super can be used to invoke immediate parent class method.
+ * super() can be used to invoke immediate parent class constructor.
  *
  * this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。
  * 从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。

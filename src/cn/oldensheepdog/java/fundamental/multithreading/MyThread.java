@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.concurrancy;
+package cn.oldensheepdog.java.fundamental.multithreading;
 
 public class MyThread extends Thread{
 

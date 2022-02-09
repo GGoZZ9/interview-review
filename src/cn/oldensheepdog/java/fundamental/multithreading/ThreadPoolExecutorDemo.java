@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.concurrancy;
+package cn.oldensheepdog.java.fundamental.multithreading;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

@@ -1,3 +1,6 @@
 1. JNLP方式搭建Master-Slave分布式构建环境
 创建Jenkins Linux Slave最简单的方法是通过SSH连接Jenkins Master和Jenkins Slave，如果在不能设置SSH的情况，还可以选择通过JNLP方式创建Jenkins Linux Slave。
 https://blog.csdn.net/nklinsirui/article/details/96485501
+java -jar ${JENKINS_HOME}/agent.jar
+TCP port for JNLP agents
+新版Jenkins的launch method是“Launch agent by connecting it to the master”，旧版是“Launch agent via Java Web start”

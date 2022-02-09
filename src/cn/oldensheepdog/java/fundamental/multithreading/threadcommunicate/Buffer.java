@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.concurrancy.threadcommunicate;
+package cn.oldensheepdog.java.fundamental.multithreading.threadcommunicate;
 
 public class Buffer {
 

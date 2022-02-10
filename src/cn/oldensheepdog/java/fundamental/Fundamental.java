@@ -105,6 +105,10 @@ public class Fundamental {
      * It is the non-static method	                                    It is the static method
      * It should be notified by notify() or notifyAll() methods	        After the specified amount of time, sleep is completed.
      * */
+
+    /**
+     * Java monitors are reentrant means java thread can reuse the same monitor for different synchronized methods if method is called from the method.
+     * */
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         fun();
     }

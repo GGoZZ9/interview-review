@@ -56,12 +56,26 @@ public class Fundamental {
     /**
      * abstract class
      * An abstract class must be declared with an abstract keyword.
-     * It can have abstract and non-abstract methods.
-     * It cannot be instantiated.
-     * It can have constructors and static methods also.
-     * It can have final methods which will force the subclass not to change the body of the method.
+     * It can have abstract and non-abstract methods. 可以包含抽象方法和非抽象方法
+     * It cannot be instantiated. 不能实例化
+     * It can have constructors and static methods also. 可以由构造方法和静态方法
+     * It can have final methods which will force the subclass not to change the body of the method. 可以有final方法
      *
      * A factory method is a method that returns the instance of the class. We will learn about the factory method later.
+     * 抽象类实现接口不用override接口的所有抽象方法, 实体类extends抽象类时也不用实现接口的所有方法，接口的所有方法由抽象类实现一部分，实体类实现一部分
+     *
+     * interface可以有静态常量static constants 和 抽象方法, 为了多继承所以用interface,用于实现松耦合 It can be used to achieve loose coupling.
+     * all the fields are public, static and final by default
+     * java8之后interface 可以有default and static 方法
+     * class的多继承不支持是因为会引起歧义
+     *
+     * */
+
+    /**
+     * java encapsulation advantage
+     * By providing only a setter or getter method, you can make the class read-only or write-only.
+     * In other words, you can skip the getter or setter methods.
+     * The encapsulate class is easy to test. So, it is better for unit testing.
      * */
 
     /**
@@ -70,7 +84,9 @@ public class Fundamental {
      * 2)	Method overloading is performed within class.	                                            Method overriding occurs in two classes that have IS-A (inheritance) relationship.
      * 3)	In case of method overloading, parameter must be different.	                                In case of method overriding, parameter must be same.
      * 4)	Method overloading is the example of compile time polymorphism.	                            Method overriding is the example of run time polymorphism.
-     * 5)	In java, method overloading can't be performed by changing return type of the method only.  Return type can be same or different in method overloading. But you must have to change the parameter.	Return type must be same or covariant in method overriding.
+     * 5)	In java, method overloading can't be performed by changing return type of the method only.
+     * Return type can be same or different in method overloading. But you must have to change the parameter.
+     * Return type must be same or covariant in method overriding.
      * */
 
     /**

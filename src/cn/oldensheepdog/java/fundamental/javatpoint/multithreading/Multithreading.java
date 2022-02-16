@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.multithreading.javatpoint.multithreading;
+package cn.oldensheepdog.java.fundamental.javatpoint.multithreading;
 
 /**
  * A component of Java that decides which thread to run or execute and which thread to wait is called a thread scheduler in Java

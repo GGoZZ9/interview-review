@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.multithreading.javatpoint.multithreading;
+package cn.oldensheepdog.java.fundamental.javatpoint.multithreading;
 
 public class OddEvenExample {
     // Starting the counter

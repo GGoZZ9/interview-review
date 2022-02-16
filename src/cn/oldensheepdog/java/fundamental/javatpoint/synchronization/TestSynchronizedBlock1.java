@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.fundamental.multithreading.javatpoint.synchronization;
+package cn.oldensheepdog.java.fundamental.javatpoint.synchronization;
 
 public class TestSynchronizedBlock1 {
     public static void main(String args[]){

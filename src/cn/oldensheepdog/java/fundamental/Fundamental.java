@@ -68,7 +68,6 @@ public class Fundamental {
      * all the fields are public, static and final by default
      * java8之后interface 可以有default and static 方法
      * class的多继承不支持是因为会引起歧义
-     *
      * */
 
     /**

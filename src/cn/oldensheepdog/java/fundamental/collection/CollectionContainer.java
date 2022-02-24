@@ -7,17 +7,41 @@ public class CollectionContainer {
 
     /**
     * 对象封装数据，对象多了也需要存储。集合用于存储对象。
-     * 对象的个数确定可以使用数组，对象的个数不确定的可以用集合。因为集合是可变长度的。
-     * 数组可以存储基本数据类型，也可以存储引用数据类型；集合只能存储引用数据类型
+     * 对象的个数确定可以使用数组 （ArrayList是一个长度可变的数组），对象的个数不确定的可以用集合。因为集合是可变长度的。
+     * 数组可以存储基本数据类型 Primitive data types，也可以存储引用数据类型；集合只能存储引用数据类型
      * 数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型
      *
      * Map接口(key 无序，唯一， value 无序，不唯一)和Collection接口是所有集合框架的父接口：
      *
      * Collection接口的子接口包括：Set（无序，不可重复）接口和List(有序,可重复)接口
+     *
      * Map接口的实现类主要有：HashMap、TreeMap、Hashtable、ConcurrentHashMap以及Properties等
      * Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等
      * List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等
     * */
+
+    /**
+     * https://blog.csdn.net/u013063153/article/details/78808923
+     * Object类中的equals方法定义为判断两个对象的地址是否相等（可以理解成是否是同一个对象），地址相等则认为是对象相等。
+     * 这也就意味着，我们新建的所有类如果没有复写equals方法，那么判断两个对象是否相等时就等同于“==”，也就是两个对象的地址是否相等。
+     * 但在我们的实际开发中，通常会认为两个对象的内容相等时，则两个对象相等，equals返回true。对象内容不同，则返回false。
+     * 2、hashCode的作用及与equals的关系。
+     * hashCode的作用是用来获取哈希码，也可以称作散列码。实际返回值为一个int型数据。用于确定对象在哈希表中的位置。
+     * Object中有hashcode方法，也就意味着所有的类都有hashCode方法。
+     * 但是，hashcode只有在创建某个类的散列表的时候才有用，需要根据hashcode值确认对象在散列表中的位置，但在其他情况下没用。
+     * java中本质上是散列表的类常见的有HashMap，HashSet，HashTable
+     * 所以，如果一个对象一定不会在散列表中使用，那么是没有必要复写hashCode方法的。但一般情况下我们还是会复写hashCode方法，因为谁能保证这个对象不会出现再hashMap等中呢？
+     *
+     * 补充几点：
+     * 1、新建一个类，尤其是业务相关的对象类的时候，最好复写equals方法。
+     * 2、复写equals方法时，同时记着要复写hashCode方法，谁能保证说这个对象一定不会出现在hashMap中呢？如果你用的是eclipse的自动代码生成，你会发现eclipse中复写equals和hashCode是在一起的。
+     *
+     * 引申出几个经常在面试中问到的问题：
+     *      1、两个对象，如果a.equals(b)==true，那么a和b是否相等？
+     *           相等，但地址不一定相等。
+     *      2、两个对象，如果hashcode一样，那么两个对象是否相等？
+     *           不一定相等，判断两个对象是否相等，需要判断equals是否为true。
+     * */
 
     /**
      * Collection

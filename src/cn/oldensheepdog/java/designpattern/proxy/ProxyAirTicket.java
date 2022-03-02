@@ -10,4 +10,9 @@ public class ProxyAirTicket implements IAirTicket{
     public void buy() {
         airTicket.buy();
     }
+
+    @Override
+    public void aaa() {
+
+    }
 }

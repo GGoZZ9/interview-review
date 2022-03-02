@@ -1,5 +1,25 @@
 package cn.oldensheepdog.performance;
+/**
+ * 性能测试是要测试系统或服务是否满足既定目标，不是为了把非要压出问题，按照业务要求和流量要求设计场景
+ * 比如几个脚本的混合场景，满足业务要求的最大流量，发压，看系统的各项指标，QPS，内存，CPU，IO等，是否在期待
+ * 的范围内。数据库是否有连接数设置不够的问题。
+ * 如果是压数据库，可以用服务，设置数据库的连接数到比较大的值，用服务场景去发压，或者用LoadRunner直接连数据库
+ * 不建议用LR，因为不能模拟用户场景
+ * */
 
+/**
+ * Thread Group
+ * Number of threads 待启动线程数
+ * Ramp-Up Period 所有线程启动完成时间
+ * Loop Count 所有请求执行的整体执行时间，必须勾选Scheduler才能设置，必须勾选Forever才能起作用
+ *
+ * Concurrency Thread Group
+ * Target Concurrency 目标并发线程数 100
+ * Ramp Up Time 加速时间 3
+ * Ramp-Up Steps Count 加速步骤计数 5
+ * Hold Target Rate Time 保持目标速率时间 6
+ * 3分钟内分5步加速，每步20个用户，直到达到100个用户，达到100个线程后所有线程继续运行并一起打到服务器6分钟
+ * */
 /**
  * https://www.guru99.com/performance-testing.html
  * https://blog.51cto.com/u_15127575/3267836
@@ -153,6 +173,33 @@ package cn.oldensheepdog.performance;
  *
  *
  * 阈值 threshold
+ * */
+
+/**
+ * 找哪个线程cpu利用率最高
+ * 找出cpu耗用厉害的进程pid， 终端执行top命令，然后按下shift+p 查找出cpu利用最厉害的pid号
+ * pid号，top -H -p pid 。然后按下shift+p，查找出cpu利用率最厉害的线程号，比如top -H -p 1328
+ * 将获取到的线程号转换成16进制
+ * 使用jstack工具将进程信息打印输出，jstack pid号 > /tmp/t.dat，比如jstack 31365 > /tmp/t.dat
+ * 编辑/tmp/t.dat文件，查找线程号对应的信息
+ *
+ * 什么是线程死锁
+ * 死锁是指两个或两个以上的进程（线程）在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象
+ * 线程 A 持有资源 2，线程 B 持有资源 1，他们同时都想申请对方的资源，所以这两个线程就会互相等待而进入死锁状态
+ *
+ * */
+/**
+ * 1. 查找进程
+ * top查看进程占用资源情况
+ * 找出java哪个进程占用过高CPU
+ * 2. 查找线程
+ * 使用 top -H -p 查看线程占用情况
+ * 3. 查找java堆栈信息
+ * 将线程ID转换成十六进制
+ * # printf %x 15664
+ * 再使用jstack 查询线程的堆栈信息
+ * jstack | grep -a 线程id（十六进制）
+ *
  * */
 
 public class Performance {

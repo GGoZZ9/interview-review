@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.designpattern.proxy.jdkProxy.anotherexample;
+package cn.oldensheepdog.java.designpattern.proxy.jdkproxy.anotherexample;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

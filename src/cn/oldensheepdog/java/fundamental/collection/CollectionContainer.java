@@ -11,7 +11,7 @@ public class CollectionContainer {
      * 数组可以存储基本数据类型 Primitive data types，也可以存储引用数据类型；集合只能存储引用数据类型
      * 数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型
      *
-     * Map接口(key 无序，唯一， value 无序，不唯一)和Collection接口是所有集合框架的父接口：
+     * Map接口 (SortedMap, HashMap)(key 无序，唯一， value 无序，不唯一)和Collection (Set, List, Queue)接口是所有集合框架的父接口：
      *
      * Collection接口的子接口包括：Set（无序，不可重复）接口和List(有序,可重复)接口
      *
@@ -123,7 +123,8 @@ public class CollectionContainer {
      * Set：检索元素效率低下，删除和插入效率高，插入和删除不会引起元素位置改变。
      * List：和数组类似，List可以动态增长，查找元素效率高，插入删除元素效率低，因为会引起其他元素位置改变
      *
-     * HashSet 是基于 HashMap 实现的，HashSet的值存放于HashMap的key上，HashMap的value统一为PRESENT，因此 HashSet 的实现比较简单，相关 HashSet 的操作，基本上都是直接调用底层 HashMap 的相关方法来完成，HashSet 不允许重复的值
+     * HashSet 是基于 HashMap 实现的，HashSet的值存放于HashMap的key上，HashMap的value统一为PRESENT，因此 HashSet 的实现比较简单，
+     * 相关 HashSet 的操作，基本上都是直接调用底层 HashMap 的相关方法来完成，HashSet 不允许重复的值
      * HashSet 中add ()元素时，判断元素是否存在的依据，不仅要比较hash值，同时还要结合equles 方法比较。会使用HashMap 的put()方法
      * 并且在HashMap中如果K/V相同时，会用新的V覆盖掉旧的V，然后返回旧的V。所以不会重复（ HashMap 比较key是否相等是先比较hashcode 再比较equals
      *

@@ -5,6 +5,39 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Executors.newFixedThreadPool(5);//creating a pool of 5 threads
+ * 线程池策略
+ * corePoolSize：核心线程数；maximunPoolSize：最大线程数
+ * 每当有新的任务到线程池时，
+ * 第一步： 先判断线程池中当前线程数量是否达到了corePoolSize，若未达到，则新建线程运行此任务，且任务结束后将该线程保留在线程池中，不做销毁处理，若当前线程数量已达到corePoolSize，则进入下一步；
+ * 第二步： 判断工作队列(workQueue)是否已满，未满则将新的任务提交到工作队列中，满了则进入下一步；
+ * 第三步： 判断线程池中的线程数量是否达到了maxumunPoolSize，如果未达到，则新建一个工作线程来执行这个任务，如果达到了则使用饱和策略来处理这个任务。注意： 在线程池中的线程数量超过corePoolSize时，每当有线程的空闲时间超过了keepAliveTime，这个线程就会被终止。直到线程池中线程的数量不大于corePoolSize为止。
+ * （由第三步可知，在一般情况下，Java线程池中会长期保持corePoolSize个线程。）
+ *
+ * 饱和策略
+ * 当工作队列满且线程个数达到maximunPoolSize后所采取的策略
+ * AbortPolicy：默认策略；新任务提交时直接抛出未检查的异常RejectedExecutionException，该异常可由调用者捕获。
+ * CallerRunsPolicy：既不抛弃任务也不抛出异常，使用调用者所在线程运行新的任务。
+ * DiscardPolicy：丢弃新的任务，且不抛出异常。
+ * DiscardOldestPolicy：调用poll方法丢弃工作队列队头的任务，然后尝试提交新任务
+ * 自定义策略：根据用户需要定制。
+ * */
+
+/**
+ * ThreadPoolExecutor ScheduledThreadPoolExecutor 是ExecutorService这个接口的两个实现类
+ *
+ * newCachedThreadPool 创建一个线程池，当需要的时候创建新线程，当之前当线程可用时会重用之前的线程，当执行短期存活的异步任务时可用提高性能
+ * 调用 execute会重用以前的线程，如果可用，如果没有可用的线程会创建新线程，并加入线程池，60s没用的线程会中断terminated并移出缓存，这样空闲
+ * 足够长时间的线程池将不占用任何资源，请注意，具有相似属性但不同详细信息（例如，超时参数）的池可以使用 ThreadPoolExecutor 构造函数创建。
+ *
+ * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+ * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
+ * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+ * */
+/**
+ * Executors 类，工具类、线程池的工厂类，用于创建并返回不同类型的线程池。
+ * */
 public class ThreadPoolExample {
     static final int MAX_TH = 3;
 

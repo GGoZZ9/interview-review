@@ -1,0 +1,59 @@
+2位senior manager
+1. spring boot starter都做了什么
+2. bean 是线程安全的吗
+3. 性能测试的几种, 性能要求从业务来还是存系统设计来
+4. 如何发现性能问题，dump文件
+5. kafka 等中间件，kafka如果6个partition，10个consumer怎么办，想决定顺序怎么办
+6. hashMap 底层机制，好处，和ArrayList区别
+7. spring boot cloud
+8. 线程池，executor 有几种，用的哪种，核心线程数最大线程数
+9. ui selenium 用哪些driver，获取元素的方法，页面有多个同样的元素怎么办
+10. 为什么用微服务，不用单体
+11. 白盒测试，帮助发现性能问题, 如何发现性能问题，dump文件
+12. java new 一个class都做了什么，堆里存什么，栈里存什么，除了引用还有什么, java的内存结构
+13. 除了cucumber还用过什么框架
+14. 中间件如何测试，没有接口，如何性能测试，如果验证收到的消息
+15. k8s 用到哪些命令，部署到pod里还是哪，用docker镜像还是啥镜像
+16. 如果压测vm都被占用了怎么办
+17. driver.quite, driver.exit的区别
+
+manager:
+1. cucumber有哪些不好用的地方
+2.
+
+测试人员：
+1. cucumber的入口, 整个框架描述
+2. 性能测试有哪些种
+3.
+
+
+
+印度男人：
+1. http response 返回错误怎么办
+
+
+
+印度女人：
+1. HTTP 返回的200 ， 500 在header里吗？
+2. left join, right join
+3. HashTable和HashMap区别
+4. feature 文件怎么写
+5. override和overload区别
+
+开发manager:
+1. junit 用过哪些注解
+2. spring 用过哪些注解
+3. feature文件怎么写，Background，Scenario outline的作用
+4. 如何用map处理XML，重复的element name怎么办
+
+
+开发人员:
+1. 多线程
+2. Hint
+3. 用索引一定能能提高速度吗
+4. 为什么java不允许多继承
+5. 抽象类和接口区别
+6. java8新特性，接口和抽象类
+7.
+
+

@@ -6,4 +6,9 @@ public class AirTicket implements IAirTicket{
     public void buy() {
         System.out.println("买票");
     }
+
+    @Override
+    public void aaa() {
+
+    }
 }

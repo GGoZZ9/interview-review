@@ -1,6 +1,20 @@
 package cn.oldensheepdog.java.spring;
 
 /**
+ * Spring IoC Inversion of control
+ * 每个模块定义了Configuration之后，需要将多个模块的Configuration组合。Spring提供了Import注解来实现多个Configuration组合。
+ * @Component或者@Service @Controller 被注册的Bean
+ * */
+
+/**
+ * @ContextConfiguration(classes = {IndependentConfig.class})
+ *
+ * @Configuration 比如mongo，jdbc，webConfig(implements WebMvcConfigurer)
+ * @ComponentScan("cn.homecredit.aldi.independent") 注册Bean，注册包路径下的所有Bean
+ * @Import({AldiCommonConfig.class, TestConfig.class, DatabaseConfig.class}) 多个模块的Configuration的组合
+ * */
+
+/**
  * @SpringBootTest 放在step class，yml 用 spring.profiles: dev,不加active
  * 或者
  * 在main/java folder下configclass加

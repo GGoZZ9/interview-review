@@ -44,9 +44,9 @@ package cn.oldensheepdog.performance;
  * 在60-180秒，每分钟到达120，2分钟到达240
  * 所以，arrivals的总数=30+60+240=330
  *
- * 3. Concurrency Thread Group
+ * 3. Concurrency Thread Group 可用于阶梯式加压测试
  * This Thread group is also suitable for goal oriented scenarios, but the goal here is to have control over the number of concurrent users over a period of time.
- * 此 线程组也适用于面向目标的方案，但此处的目标是控制一段时间内的并发用户数。
+ * 此线程组也适用于面向目标的方案，但此处的目标是控制一段时间内的并发用户数。
  *
  * Target Concurrency: 爬坡后需要维持的并发用户数
  * Ramp Up Time: 爬坡时间

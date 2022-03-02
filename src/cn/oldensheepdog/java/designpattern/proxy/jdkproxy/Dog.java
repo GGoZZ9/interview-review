@@ -1,4 +1,4 @@
-package cn.oldensheepdog.java.designpattern.proxy.jdkProxy;
+package cn.oldensheepdog.java.designpattern.proxy.jdkproxy;
 
 public class Dog implements Animal{
     @Override

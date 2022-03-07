@@ -1,6 +1,15 @@
 2位senior manager
 1. spring boot starter都做了什么
-2. bean 是线程安全的吗
+2. bean 一定是线程安全的吗 https://cloud.tencent.com/developer/article/1743283
+默认是单例，单例通常不是线程安全的，因为多线程用一个单例，如果是无状态的就是线程安全的，也就是只查询不存储数据
+想要线程安全就把bean作用域改成 protopyte，每次创建新的bean，线程间不存在bean的共享
+controller、service和dao层本身并不是线程安全的，只是如果只是调用里面的方法，而且多线程调用一个实例的方法，
+会在内存中复制变量，这是自己的线程的工作内存，是安全的。
+Java虚拟机栈是线程私有的，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：
+每个方法在执行的同时都会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。
+局部变量封闭在执行线程的栈中，其他线程无法访问这个栈
+所以其实任何无状态单例都是线程安全的
+
 3. 性能测试的几种, 性能要求从业务来还是存系统设计来
 4. 如何发现性能问题，dump文件
 5. kafka 等中间件，kafka如果6个partition，10个consumer怎么办，想决定顺序怎么办
@@ -24,7 +33,7 @@ manager:
 测试人员：
 1. cucumber的入口, 整个框架描述
 2. 性能测试有哪些种
-3.
+3. 对shell用到哪个程度
 
 
 
@@ -35,10 +44,12 @@ manager:
 
 印度女人：
 1. HTTP 返回的200 ， 500 在header里吗？
-2. left join, right join
+2. sql：left join, right join，group by
 3. HashTable和HashMap区别
 4. feature 文件怎么写
 5. override和overload区别
+6. Hello 字符串，取出子字符串
+
 
 开发manager:
 1. junit 用过哪些注解
@@ -54,6 +65,6 @@ manager:
 4. 为什么java不允许多继承
 5. 抽象类和接口区别
 6. java8新特性，接口和抽象类
-7.
+7. linux shell 如何写循环
 
 

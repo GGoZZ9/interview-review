@@ -1,6 +1,25 @@
 package cn.oldensheepdog.java.spring;
 
 /**
+ * Spring 控制反转 IoC
+ * Spring中的Bean默认是单例模式的，框架并没有对bean进行多线程的封装处理。实际上大部分时间Bean是无状态的（比如Dao） 所以说在某种程度上来说Bean其实是安全的。
+ * 但是如果Bean是有状态的 那就需要开发人员自己来进行线程安全的保证，最简单的办法就是改变bean的作用域 把  singleton 改为 protopyte， 这样每次请求Bean就相当于是 new Bean() 这样就可以保证线程的安全了。
+ *
+ * 有状态就是有数据存储功能
+ * 无状态就是不会保存数据
+ *
+ * 首先问@Controller @Service是不是线程安全的？
+ *
+ * 答：默认配置下不是的。为啥呢？因为默认情况下@Controller没有加上@Scope，没有加@Scope就是默认值singleton，单例的。意思就是系统只会初始化一次Controller容器，
+ * 所以每次请求的都是同一个Controller容器，当然是非线程安全的。
+ * 虽然每次都是单独创建一个Controller但是扛不住他变量本身是static的呀，所以说呢，即便是加上@Scope注解也不一定能保证Controller 100%的线程安全。
+ * 所以是否线程安全在于怎样去定义变量以及Controller的配置
+ *
+ * 在 @Controller/@Service 等容器中，默认情况下，scope值是单例-singleton的，也是线程不安全的。
+ * 尽量不要在@Controller/@Service 等容器中定义静态变量，不论是单例(singleton)还是多实例(prototype)他都是线程不安全的。
+ * 默认注入的Bean对象，在不设置scope的时候他也是线程不安全的。
+ * 一定要定义变量的话，用ThreadLocal来封装，这个是线程安全的。
+ *
  * Spring IoC Inversion of control
  * 每个模块定义了Configuration之后，需要将多个模块的Configuration组合。Spring提供了Import注解来实现多个Configuration组合。
  * @Component或者@Service @Controller 被注册的Bean

@@ -1,6 +1,14 @@
 package cn.oldensheepdog.selenium;
 
 /**
+ * driver. quit() method closes all browser windows and ends the WebDriver session.
+ * webDriver.Close() - Close the browser window that the driver has focus of
+ * webDriver.Quit() - Calls Dispose()
+ * webDriver.Dispose() Closes all browser windows and safely ends the session
+ *
+ * quit关闭所有浏览器窗口，终止WebDriver session
+ * driver. close() closes only the current window on which Selenium is running automated tests.
+ * 只关闭当前run自动化测试对窗口
  * selenium 获取页面元素的几种方法  8种方法
  * 如何填入自己想要的值
  * WebElement element = driver.findElement(By.id("passwd-id"));

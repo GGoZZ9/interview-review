@@ -4,15 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 /**
  * Executors.newFixedThreadPool(5);//creating a pool of 5 threads
  * 线程池策略
  * corePoolSize：核心线程数；maximunPoolSize：最大线程数
  * 每当有新的任务到线程池时，
- * 第一步： 先判断线程池中当前线程数量是否达到了corePoolSize，若未达到，则新建线程运行此任务，且任务结束后将该线程保留在线程池中，不做销毁处理，若当前线程数量已达到corePoolSize，则进入下一步；
+ * 第一步： 先判断线程池中当前线程数量是否达到了corePoolSize，若未达到，则新建线程运行此任务，且任务结束后将该线程保留在线程池中，不做销毁处理，
+ * 若当前线程数量已达到corePoolSize，则进入下一步；
  * 第二步： 判断工作队列(workQueue)是否已满，未满则将新的任务提交到工作队列中，满了则进入下一步；
- * 第三步： 判断线程池中的线程数量是否达到了maxumunPoolSize，如果未达到，则新建一个工作线程来执行这个任务，如果达到了则使用饱和策略来处理这个任务。注意： 在线程池中的线程数量超过corePoolSize时，每当有线程的空闲时间超过了keepAliveTime，这个线程就会被终止。直到线程池中线程的数量不大于corePoolSize为止。
+ * 第三步： 判断线程池中的线程数量是否达到了maxumunPoolSize，如果未达到，则新建一个工作线程来执行这个任务，如果达到了则使用饱和策略来处理这个任务。
+ * 注意： 在线程池中的线程数量超过corePoolSize时，每当有线程的空闲时间超过了keepAliveTime，这个线程就会被终止。直到线程池中线程的数量不大于corePoolSize为止。
  * （由第三步可知，在一般情况下，Java线程池中会长期保持corePoolSize个线程。）
  *
  * 饱和策略
@@ -25,6 +28,7 @@ import java.util.concurrent.Executors;
  * */
 
 /**
+ * Executors只是一个工厂类，它所有的方法返回的都是ThreadPoolExecutor、ScheduledThreadPoolExecutor这两个类的实例。
  * ThreadPoolExecutor ScheduledThreadPoolExecutor 是ExecutorService这个接口的两个实现类
  *
  * newCachedThreadPool 创建一个线程池，当需要的时候创建新线程，当之前当线程可用时会重用之前的线程，当执行短期存活的异步任务时可用提高性能
@@ -39,6 +43,7 @@ import java.util.concurrent.Executors;
  * Executors 类，工具类、线程池的工厂类，用于创建并返回不同类型的线程池。
  * */
 public class ThreadPoolExample {
+
     static final int MAX_TH = 3;
 
     // main method

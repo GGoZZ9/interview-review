@@ -16,6 +16,11 @@ package cn.oldensheepdog.java.spring;
  *
  *  如果不用Spring boot parent,可以用spring-boot-dependencies，<scope>import</scope>  可以对确定的依赖用不同的版本
  * */
+
+/**
+ * Spring启动时去读取应用程序提供的Bean配置信息,并在Spring容器中生成相应的Bean定义注册表,然后根据注册表去实例化Bean,装配好Bean之间的依赖关系,为上层提供准备就绪的运行环境.
+ * */
+
 /**
  * 嵌入式的server作为可部署的应用的一部分
  * */
@@ -71,6 +76,8 @@ package cn.oldensheepdog.java.spring;
  *
  *
  * */
+
+
 /**
  * AOP	OOP
  * Aspect: A code unit that encapsulates pointcuts, advices, and attributes.	Class: A code unit that encapsulates methods and attributes.
@@ -79,5 +86,13 @@ package cn.oldensheepdog.java.spring;
  * Waver: It constructs code (source or object) with advice.	                Compiler: It converts source code to object code.
  *
  * */
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class SpringBootFundamental {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootFundamental.class, args);
+    }
 }

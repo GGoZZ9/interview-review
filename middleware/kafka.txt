@@ -1,0 +1,49 @@
+Servers
+一些服务构成存储层,叫做brokers
+一些服务构run kafka connect 持续的import和export数据
+Clients
+允许您编写分布式应用程序和微服务，这些应用程序和微服务以并行、大规模和容错的方式读取、写入和处理事件流，即使在网络问题或机器故障的情况下也是如此。
+
+event
+包括 key ，value，timestamp, metadata
+
+Producers
+是应用客户端，publish events to Kafka
+Consumers
+订阅这些events
+
+生产者和消费者彼此不可知，是kafka高扩展的关键；生产者永远不需要等待消费者。Kafka 提供了各种保证，例如能够精确地处理一次事件。
+事件被组织并持续存储在topics里，一个topic就像一个文件夹，events是文件夹里的文件。
+一个topic可以有0个或多个生产者和0个或多个消费者
+topic中的event可以根据需要随时读取 — 与传统消息传递系统不同，事件在使用后不会被删除，可以定义event保留的时间，old events将被丢弃
+
+topics是partitioned 分区的，一个topic被存在不同的kafka brokers上 被分为 许多 buckets
+当新event published到topic上，实际上是增加了一个topic的partition，有同样key的写到同一个partition
+kafka保证任何给定topic-partition的consumer以partition写入的顺序读取该partition的event
+
+为了保证容错和高可用，可以复制每个topic，甚至到跨地理位置的数据中心
+
+Kafka的producer和consumer都可以多线程地并行操作，而每个线程处理的是一个分区的数据
+
+group.id一样的 consumer，这些consumer属于一个consumer group
+
+同一个partition，只能被消费组里的一个消费者消费，但是可以同时被多个消费组消费
+
+在分配partition时，首先要看的就是partition数量与consumer数量关系：
+
+partition = consumer（3个partiton --> 3个consumer）：一对一
+partition > consumer（3个partiton --> 2个consumer）
+            consumer1会消费partition0/partition1分区
+            consumer2会消费partition2分区
+partition < consumer（3个partition --> 4个或以上consumer）
+            仍然只有3个consumer对应3个partition
+            其他的consumer无法消费消息
+
+consumer和partition数量建议：
+
+1. 如果consumer比partition多，是浪费。因为kafka的设计是在一个partition上是不允许并发的， 所以consumer数不要大于partition数
+2. 如果consumer比partition少，一个consumer会对应于多个partitions，这里主要合理分配 consumer数和partition数，否则会导致partition里面的数据被取的不均匀。
+当consumer从多个partition读到数据，不保证数据间的顺序性，kafka只保证在一个partition 上数据是有序的，但多个partition，根据读的顺序会有不同
+==> Partitions : Consumers = 1 : 1是最好的，再不行也要保证partiton数目是consumer数目的整数倍，比如3c去消费12p。
+
+分区分配策略就是每个consumer具体消费哪个partition。在kafka中，存在三种分区分配策略，一种是Range(默认)、 一种是RoundRobin（轮询）、 一种是StickyAssignor(粘性)。

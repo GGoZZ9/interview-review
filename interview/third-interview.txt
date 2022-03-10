@@ -1,8 +1,20 @@
+电话面试-上海
+1. cucumber框架的结构
+2. hashMap hashSet区别
+3. shell三剑客，找到log文件中的特定时间段的内容并放入新的文件
+4. restful是什么
+5. 性能测试了解多少
+6. case定义了多少等级
+7. cicd 的流程
+8. java如何生成随机数 new Random(Instant.now().getEpochSecond()); random.nextInt(max - min + 1) + min;
+
+
+
 2位senior manager
 1. spring boot starter都做了什么
 2. bean 一定是线程安全的吗 https://cloud.tencent.com/developer/article/1743283
 默认是单例，单例通常不是线程安全的，因为多线程用一个单例，如果是无状态的就是线程安全的，也就是只查询不存储数据
-想要线程安全就把bean作用域改成 protopyte，每次创建新的bean，线程间不存在bean的共享
+想要线程安全就把bean作用域改成 prototype，每次创建新的bean，线程间不存在bean的共享
 controller、service和dao层本身并不是线程安全的，只是如果只是调用里面的方法，而且多线程调用一个实例的方法，
 会在内存中复制变量，这是自己的线程的工作内存，是安全的。
 Java虚拟机栈是线程私有的，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：
@@ -66,5 +78,6 @@ manager:
 5. 抽象类和接口区别
 6. java8新特性，接口和抽象类
 7. linux shell 如何写循环
+8. jenkins pipeline 声明式和脚本式的区别
 
 

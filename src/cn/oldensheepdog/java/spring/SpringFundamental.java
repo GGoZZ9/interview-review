@@ -1,9 +1,13 @@
 package cn.oldensheepdog.java.spring;
 
 /**
+ * Spring 最重要的是依赖注入和控制反转，帮助开发松耦合的应用。Spring Boot最重要的是自动配置 auto configuration，帮助我们开发独立的应用用最小的或者0配置
+ * 用于开发简单的基于spring的应用或者RESTful服务
+ * Spring MVC is a model view controller-based web framework under the Spring framework.
+ * Spring Boot有默认的configurations，是开发更快速简单，Spring MVC要手动配置，部署需要descriptor，每个依赖是独立管理的，而springboot是集中管理依赖
  * Spring 控制反转 IoC
  * Spring中的Bean默认是单例模式的，框架并没有对bean进行多线程的封装处理。实际上大部分时间Bean是无状态的（比如Dao） 所以说在某种程度上来说Bean其实是安全的。
- * 但是如果Bean是有状态的 那就需要开发人员自己来进行线程安全的保证，最简单的办法就是改变bean的作用域 把  singleton 改为 protopyte， 这样每次请求Bean就相当于是 new Bean() 这样就可以保证线程的安全了。
+ * 但是如果Bean是有状态的 那就需要开发人员自己来进行线程安全的保证，最简单的办法就是改变bean的作用域 把  singleton 改为 prototype， 这样每次请求Bean就相当于是 new Bean() 这样就可以保证线程的安全了。
  *
  * 有状态就是有数据存储功能
  * 无状态就是不会保存数据
@@ -67,7 +71,8 @@ package cn.oldensheepdog.java.spring;
  * */
 /**
  * 谈谈自己对于 Spring IoC 和 AOP 的理解
- * IoC（Inverse of Control:控制反转）是一种设计思想，就是 将原本在程序中手动创建对象的控制权，交由Spring框架来管理。  IoC 在其他语言中也有应用，并非 Spirng 特有。 IoC 容器是 Spring 用来实现 IoC 的载体，  IoC 容器实际上就是个Map（key，value）,Map 中存放的是各种对象。
+ * IoC（Inverse of Control:控制反转）是一种设计思想，就是 将原本在程序中手动创建对象的控制权，交由Spring框架来管理。
+ * IoC 在其他语言中也有应用，并非 Spring 特有。 IoC 容器是 Spring 用来实现 IoC 的载体，  IoC 容器实际上就是个Map（key，value）,Map 中存放的是各种对象。
  * 将对象之间的相互依赖关系交给 IOC 容器来管理，并由 IOC 容器完成对象的注入
  * Spring 时代我们一般通过 XML 文件来配置 Bean，后来开发人员觉得 XML 文件来配置不太好，于是 SpringBoot 注解配置就慢慢开始流行起来。
  * spring-context 会自动将 spring-core、spring-beans、spring-aop、spring-expression 这几个基础 jar 包带进来。
@@ -90,7 +95,8 @@ package cn.oldensheepdog.java.spring;
 
 /**
  * Spring 中的单例 bean 的线程安全问题了解吗？
- * 单例 bean 存在线程问题，主要是因为当多个线程操作同一个对象的时候，对这个对象的非静态成员变量的写操作会存在线程安全问题。
+ * 单例 bean 存在线程问题，主要是因为当多个线程操作同一个对象的时候，对这个对象的非静态成员变量的写操作会存在线程安全问题。（如果使用了静态变量就有线程安全问题，因为静态变量是在
+ * 类加载时占用一个存储区，每个线程共用这个存储区，所以如果在静态方法里使用了静态变量就会有线程安全问题）
  * 常见的有两种解决办法：
  * 在Bean对象中尽量避免定义可变的成员变量（不太现实）。
  * 在类中定义一个ThreadLocal成员变量，将需要的可变成员变量保存在 ThreadLocal 中（推荐的一种方式）。

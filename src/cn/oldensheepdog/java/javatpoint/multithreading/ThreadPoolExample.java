@@ -31,13 +31,20 @@ import java.util.logging.Logger;
  * Executors只是一个工厂类，它所有的方法返回的都是ThreadPoolExecutor、ScheduledThreadPoolExecutor这两个类的实例。
  * ThreadPoolExecutor ScheduledThreadPoolExecutor 是ExecutorService这个接口的两个实现类
  *
- * newCachedThreadPool 创建一个线程池，当需要的时候创建新线程，当之前当线程可用时会重用之前的线程，当执行短期存活的异步任务时可用提高性能
+ * 1. newCachedThreadPool 创建一个线程池，当需要的时候创建新线程，当之前当线程可用时会重用之前的线程，当执行短期存活的异步任务时可用提高性能
  * 调用 execute会重用以前的线程，如果可用，如果没有可用的线程会创建新线程，并加入线程池，60s没用的线程会中断terminated并移出缓存，这样空闲
  * 足够长时间的线程池将不占用任何资源，请注意，具有相似属性但不同详细信息（例如，超时参数）的池可以使用 ThreadPoolExecutor 构造函数创建。
+ * 核心线程数为0
+ * 最大线程数为Integer.MAX_VALUE
+ * 阻塞队列是SynchronousQueue
+ * 非核心线程空闲存活时间为60秒
+ * 适用于并发执行大量短期的小任务。
  *
- * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
- * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
- * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+ * 2. newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。 （核心线程数和最大线程数大小一样，阻塞队列为无界队列LinkedBlockingQueue
+ * newFixedThreadPool 适用于处理CPU密集型的任务，确保CPU在长期被工作线程使用的情况下，尽可能的少的分配线程，即适用执行长期的任务。）
+ * 3. newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。周期性执行任务的场景，需要限制线程数量的场景
+ * 4. newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+ * 适用于串行执行任务的场景，一个任务一个任务地执行。
  * */
 /**
  * Executors 类，工具类、线程池的工厂类，用于创建并返回不同类型的线程池。

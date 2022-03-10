@@ -202,5 +202,36 @@ package cn.oldensheepdog.performance;
  *
  * */
 
+/**
+ * 终端获取dump文件
+ * kill -3 {Pid}
+ * 以下对不同部署方式下，Pid的获取:
+ *
+ * 方式一（IAAS/PAAS部署通用）
+ * containerName //1. 获取容器名称
+ * containerId=$(docker ps | grep ${containerName} | awk ‘print $1’) //2. 获取容器id
+ * Docker inspect ${containerId} |grep Pid //获取进程号
+ *
+ * Ps -ef | grep ${Pid} //获取虚机的进程号
+ *
+ * 最后执行kill -3 {虚机进程号}，也就是 kill -3 22625,即可以生成堆栈的快照文件。
+ *
+ * 方式二（进入容器内执行）——前提是容器正常可以进入
+ * 更直接的方式可以直接进入容器内获取对应的进程号，并执行kill -3 ${Pid};
+ *
+ * 方式三（IAAS部署）
+ * 在MSB上获取应用的实例端口
+ *
+ * netstat -anp | grep ${port }  //获取进程号
+ *
+ * 最后执行kill -3 进程号 获取堆栈快照文件
+ *
+ * 获取的dump文件有两种格式javacore-dump-***.txt 和 dump-dump-***.phd。
+ * javacore-dump-***.txt 文件: 通常主要是关于应用的cpu使用情况，以及java进程的快照，主要保存的是应用各个线程在某一时刻的运行的位置，即JVM执行的具体位置，包括类方法和对应的行，即threaddump文件。
+ * dump-dump-***.phd : 通常主要是关于应用memory的详细情况，即对应的heapdump文件，heapdump文件是一个二进制镜像文件，是某个时刻java堆栈的快照，并且保存JVM堆中对象的使用情况。
+ *
+ * Thread dump文件抓取和分析(JCA工具)
+ * */
+
 public class Performance {
 }

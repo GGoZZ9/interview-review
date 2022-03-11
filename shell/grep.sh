@@ -1,3 +1,4 @@
+# https://www.linuxidc.com/Linux/2019-08/160117.htm
 # 1）查找包含“the”的行
 grep -n 'the' test.txt
 # 2）查找不包含“the”的行
@@ -25,5 +26,8 @@ grep -n 'woo*d' test.txt
 grep -n 'w.*d' test.txt
 # 13）{n}匹配确定的n次。查询包含两个o的行 “{}”是特殊字符需要用“\”转义
 grep -n 'o\{2\}' test.txt
-#
+# 14）查询以w开头d结尾，中间包含2~5个o的行
+grep -n 'wo\{2,5\}' test.txt
+# 15）查询以w开头以d结尾，中间包含2个以上o的行  {n,}至少匹配n次
+grep -n 'wo\{2,\}' test.txt
 

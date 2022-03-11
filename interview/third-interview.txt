@@ -7,6 +7,8 @@
 6. case定义了多少等级
 7. cicd 的流程
 8. java如何生成随机数 new Random(Instant.now().getEpochSecond()); random.nextInt(max - min + 1) + min;
+9. pipeline用什么开发的
+10. String和string有什么不同
 
 
 
@@ -46,6 +48,7 @@ manager:
 1. cucumber的入口, 整个框架描述
 2. 性能测试有哪些种
 3. 对shell用到哪个程度
+4. Python tuple的特点
 
 
 
@@ -79,5 +82,15 @@ manager:
 6. java8新特性，接口和抽象类
 7. linux shell 如何写循环
 8. jenkins pipeline 声明式和脚本式的区别
+9. String , StringBuilder, StringBuffer
+10. hashMap, linkedHashMap
+11. HashCode为什么要重写
+12. Python2和Python3的区别
+13. Python 各种数据类型
+14. list有哪些方法
+15. 如何提高mutation覆盖率
+16. 压力测试遇到过的问题
+17. 压力测试结果通知
+
 
 

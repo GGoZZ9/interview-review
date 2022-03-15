@@ -28,6 +28,7 @@ import java.util.logging.Logger;
  * */
 
 /**
+ * ExecutorService executorService = Executors.newCachedThreadPool()
  * Executors只是一个工厂类，它所有的方法返回的都是ThreadPoolExecutor、ScheduledThreadPoolExecutor这两个类的实例。
  * ThreadPoolExecutor ScheduledThreadPoolExecutor 是ExecutorService这个接口的两个实现类
  *

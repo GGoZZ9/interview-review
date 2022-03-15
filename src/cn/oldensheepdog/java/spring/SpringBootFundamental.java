@@ -13,6 +13,7 @@ package cn.oldensheepdog.java.spring;
  *  The spring-boot-starter-parent inherits dependency management from spring-boot-dependencies
  *  Spring Boot Starter Parent defines spring-boot-dependencies as a parent pom.
  *  只需要确定spring-boot版本号，其他starter的版本号可以省略
+ *  data-mongodb, data-redis, data-jdbc, starter-test, starter-web
  *
  *  如果不用Spring boot parent,可以用spring-boot-dependencies，<scope>import</scope>  可以对确定的依赖用不同的版本
  * */

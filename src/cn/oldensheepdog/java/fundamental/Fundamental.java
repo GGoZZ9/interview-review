@@ -58,7 +58,7 @@ public class Fundamental {
      * An abstract class must be declared with an abstract keyword.
      * It can have abstract and non-abstract methods. 可以包含抽象方法和非抽象方法
      * It cannot be instantiated. 不能实例化
-     * It can have constructors and static methods also. 可以由构造方法和静态方法
+     * It can have constructors and static methods also. 可以有构造方法和静态方法
      * It can have final methods which will force the subclass not to change the body of the method. 可以有final方法
      *
      * A factory method is a method that returns the instance of the class. We will learn about the factory method later.

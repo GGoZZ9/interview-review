@@ -1,5 +1,5 @@
 https://cloud.tencent.com/developer/article/1698363
-
+https://www.joshua317.com/article/189
 Java代码被编译器编译成字节码之后，JVM开辟一片内存空间（也叫运行时数据区），通过类加载器加到到运行时数据区来存储程序执行期间需要用到的数据和相关信息，在这个数据区中，它由以下几部分组成：
 
 

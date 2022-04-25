@@ -1,4 +1,8 @@
 SRE面试：
+sql 查重，去重，删除，删表
+OCP
+什么是k8，什么是docker
+有没有做过监控log的工作
 
 
 电话面试-上海
@@ -91,7 +95,7 @@ manager:
 6. java8新特性，接口和抽象类
 7. linux shell 如何写循环  for; do done 循环
 8. jenkins pipeline 声明式和脚本式的区别
-9. String , StringBuilder, StringBuffer
+9. String , StringBuilder, StringBuffer: 后两个运行修改字符串
 10. hashMap, linkedHashMap: linkedHashMap 里面的元素是有序的。
 11. HashCode为什么要重写
 重写equals，必须重写hashCode： 两个相等的对象必须具有相等的散列码（Java关键约定）

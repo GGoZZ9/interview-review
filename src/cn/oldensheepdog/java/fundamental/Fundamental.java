@@ -61,13 +61,13 @@ public class Fundamental {
      * It can have constructors and static methods also. 可以有构造方法和静态方法
      * It can have final methods which will force the subclass not to change the body of the method. 可以有final方法
      *
-     * A factory method is a method that returns the instance of the class. We will learn about the factory method later.
+     * A factory method is a method that returns the instance of the class.
      * 抽象类实现接口不用override接口的所有抽象方法, 实体类extends抽象类时也不用实现接口的所有方法，接口的所有方法由抽象类实现一部分，实体类实现一部分
      *
      * interface可以有静态常量static constants 和 抽象方法, 为了多继承所以用interface,用于实现松耦合 It can be used to achieve loose coupling.
      * all the fields are public, static and final by default
      * java8之后interface 可以有default and static 方法
-     * class的多继承不支持是因为会引起歧义
+     * class的多继承不支持是因为会引起歧义 Cause ambiguity
      * */
 
     /**
@@ -94,7 +94,7 @@ public class Fundamental {
      * Anonymous inner class: An anonymous inner class can be useful when making an instance of an object with certain "extras"
      * such as overloading methods of a class or interface, without having to actually subclass a class.
      * Local inner class:A class i.e., created inside a method, is called local inner class in java.
-     * static nested class: TestOuter1.Inner obj=new TestOuter1.Inner();
+     * static nested 嵌套的 class: TestOuter1.Inner obj=new TestOuter1.Inner();
      * */
 
     /**
@@ -204,6 +204,7 @@ public class Fundamental {
  * */
 
 /**
+ * access modifier
  * private : 在同一类内可见。使用对象：变量、方法 The private keyword is an access modifier used for attributes, methods and constructors,
  * making them only accessible within the declared class.
  * protected : 对同一包内的类和所有子类可见。使用对象：变量、方法 making them accessible in the same package and subclasses.
@@ -254,30 +255,29 @@ public class Fundamental {
  * static关键字还有一个比较关键的作用就是 用来形成静态代码块以优化程序性能。static块可以置于类中的任何地方，类中可以有多个static块。
  * 在类初次被加载的时候，会按照static块的顺序来执行每个static块，并且只会执行一次,是因为它的特性:只会在类加载的时候执行一次。
  * （虚拟机把描述类的数据从class文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。
- * 类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个java.lang.Class对象，用来封装类在方法区内的数据结构。）
+ * 类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区 Method Area 内，然后在堆区创建一个java.lang.Class对象，用来封装类在方法区内的数据结构 data structure。）
  * 因此，很多时候会将一些只需要进行一次的初始化操作都放在static代码块中进行。
- * 1、被static修饰的变量或者方法是独立于该类的任何对象，也就是说，这些变量和方法不属于任何一个实例对象，而是被类的实例对象所共享
+ * 1、被static修饰的变量或者方法是独立于 Independent of 该类的任何对象，也就是说，这些变量和方法不属于任何一个实例对象，而是被类的实例对象所共享
  * 2、在该类被第一次加载的时候，就会去加载被static修饰的部分，而且只在类第一次使用时加载并进行初始化，注意这是第一次用就要初始化，后面根据需要是可以再次赋值的。
- * 3、static变量值在类加载的时候分配空间，以后创建类对象的时候不会重新分配。赋值的话，是可以任意赋值的！
+ * 3、static变量值在类加载的时候分配空间，以后创建类对象的时候不会重新分配。赋值 assignment 的话，是可以任意赋值的！
  * 4、被static修饰的变量或者方法是优先于对象存在的，也就是说当一个类加载完毕之后，即便没有创建对象，也可以去访问。
  * 类的加载过程
  * 在创建(new)一个对象的时候，先要去JVM的方法区里获取该对象所对应的类的信息，如果方法区里没有该类的信息，则需要去将它加载进来，加载进来之后，有了该类的信息，我们才能创建一个对象。
- * Java类被编译后，会生成一个class文件，在运行的时候会将class文件加载到Java虚拟机JVM中，class文件由类装载器装载，在JVM中（准确的来说应该是在JVM的方法区里）
+ * Java类被编译后，会生成一个class文件，在运行的时候会将class文件加载到Java虚拟机JVM中，class文件由类装载器装载，在JVM中（准确的来说应该是在JVM的方法区 Method Area 里）
  * 将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数，属性和方法等。
  * 静态代码块是在类加载时自动执行的代码，非静态代码块是在创建对象时自动执行的代码，不创建对象不执行该类的非静态代码块。
  * 对象的创建过程
- * 1、new一个对象时，在堆内存中开辟一块空间。
+ * 1、new一个对象时，在堆 Heap 内存中开辟一块空间。
  * 2、给开辟的空间分配一个地址。
  * 3、把对象的所有非静态成员加载到所开辟的空间下。
  * 4、所有的非静态成员加载完成之后，对所有非静态成员变量进行默认初始化。
- * 5、所有非静态成员变量默认初始化完成之后，调用构造函数。
+ * 5、所有非静态成员变量默认初始化完成之后，调用 invoke 构造函数。
  * 6、在构造函数入栈执行时，分为两部分：先执行构造函数中的隐式三步，再执行构造函数中书写的代码。
  * 隐式三步：
- *    ①执行super()语句
- *
+ *    ①执行super()语句 statement
  *    ②显示初始化(对开辟空间下的所有非静态成员变量进行)
- *
  *    ③执行构造代码块
+ *
  * 7、在整个构造函数执行完并弹栈后，把空间分配的地址赋给引用对象。
  * super语句，可能出现以下三种情况:
  * 1）构造方法体的第一行是this()语句，则不会执行隐式三步，而是调用this()语句所对应的的构造方法，最终肯定会有第一行不是this语句的构造方法。
@@ -297,7 +297,7 @@ public class Fundamental {
  *
  * 堆的优势是可以动态地分配内存大小，所有使用new xxx()构造出来的对象都在堆中存储，生存期也不必事先告诉编译器，Java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度较慢。
  * 栈的优势是，存取速度比堆要快，仅次于直接位于CPU中的寄存器。但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。另外，栈数据可以共享
- * 常量池：存放字符串常量和基本类型常量（public static final）。常量池的好处是为了避免频繁的创建和销毁对象而影响系统性能，其实现了对象的共享。
+ * 常量池：存放字符串常量和基本类型常量（public static final）。常量池的好处是为了避免频繁的创建和销毁对象而影响系统性能，其实现了对象的共享 sharing 。
  * 包装类数据，如Integer, String, Double等将相应的基本数据类型包装起来的类
  *
  * String s = new String(“abc”);产生几个对象？答：一个或两个，如果常量池中原来没有”abc”,就是两个。
@@ -305,10 +305,10 @@ public class Fundamental {
  * 我们在使用诸如String str = "abc"；的格式定义类时，总是想当然地认为，我们创建了String类的对象str。担心陷阱！对象可能并没有被创建！
  * 唯一可以肯定的是，指向 String类的引用被创建了。
  * 至于这个引用到底是否指向了一个新的对象，必须根据上下文来考虑，除非你通过new()方法来显要地创建一个新的对象。
- * 当比较包装类里面的数值是否相等时，用equals()方法；当测试两个包装类的引用是否指向同一个对象时，用==。
+ * 当比较包装类里面的数值是否相等时，用equals()方法；当测试两个包装类的引用是否指向同一个对象时，用== two equal signs。
  * 由于String类的immutable性质，当String变量需要经常变换其值时，应该考虑使用StringBuffer类，以提高程序效率。
- * 栈使用的是一级缓存， 他们通常都是被调用时处于存储空间中，调用完毕立即释放。
- * 堆则是存放在二级缓存中，生命周期由虚拟机的垃圾回收算法来决定（并不是一旦成为孤儿对象就能被回收）。所以调用这些对象的速度要相对来得低一些
+ * 栈使用的是一级L1缓存， 他们通常都是被调用时处于存储空间中，调用完毕立即释放 release。
+ * 堆则是存放在二级L2缓存中，生命周期由虚拟机的垃圾回收 mechanism 算法 arithmetic 来决定（并不是一旦成为孤儿对象就能被回收）。所以调用这些对象的速度要相对来得低一些
  *
  *
  * break 跳出总上一层循环，不再执行循环(结束当前的循环体)
@@ -318,17 +318,17 @@ public class Fundamental {
  * */
 
 /**
- * 非静态代码块则在类每次调用构造方法之前调用一次，所以也称之为匿名构造方法，可以用于类中属性的初始化操作，由于位于构造方法之前调用，
+ * 非静态代码块则在类每次调用构造方法之前调用一次，所以也称之为匿名 anonymous 构造方法，可以用于类中属性的初始化操作，由于位于构造方法之前调用，
  * 所以一些初始化的成员变量可能会在构造方法中被重新赋值，从而覆盖掉之前的初始化的值
  * */
 
 /**
  * 面向对象（OO）
  * 易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统
- * 抽象：抽象是将一类对象的共同特征总结出来构造类的过程
- * 封装把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法
- * 继承是使用已存在的类的定义作为基础建立新类的技术
- * 多态一个引用变量到底会指向哪个类的实例对象必须在由程序运行期间才能决定。在Java中有两种形式可以实现多态：继承（多个子类对同一方法的重写）和接口（实现接口并覆盖接口中同一方法）
+ * 抽象 abstract：抽象是将一类对象的共同特征总结出来构造类的过程
+ * 封装 encapsulate 把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法
+ * 继承 inherit 是使用已存在的类的定义作为基础建立新类的技术
+ * 多态 polymorphism 一个引用变量到底会指向哪个类的实例对象必须在由程序运行期间才能决定。在Java中有两种形式可以实现多态：继承（多个子类对同一方法的重写）和接口（实现接口并覆盖接口中同一方法）
  * 方法重载（overload）实现的是编译时的多态性（也称为前绑定），而方法重写（override）实现的是运行时的多态性（也称为后绑定）
  * 方法重写（子类继承父类并重写父类中已有的或抽象的方法）；
  * 对象造型（用父类型引用子类型对象，这样同样的引用调用同样的方法就会根据子类对象的不同而表现出不同的行为）。
@@ -353,34 +353,34 @@ public class Fundamental {
  * 在 Java8 中接口也能写实现方法了，但却不能写构造方法，而在抽象类是可以写构造方法的，意味着抽象类是参与类的实例化过程的，而接口则不是。
  * 抽象类可以有自己的各种成员变量，并且可以通过自己的非抽象方法进行改变，而接口中的变量默认全是 public static final 修饰的，意味着都是常量，并且不能被自己和外部修改。
  * 接口可以实现多继承，而抽象类只能单继承。
- * 抽象类中的方法可以是任意访问修饰符，接口方法默认修饰符是public；抽象类的字段声明可以是任意的，接口的字段默认都是 static 和 final 的
+ * 抽象类中的方法可以是任意 any 访问修饰符，接口方法默认修饰符是public；抽象类的字段声明 declare 可以是任意的，接口的字段默认都是 static 和 final 的
  * */
 
 /**
  * 如何选择用接口还是抽象类
- * 行为模型应该总是通过接口而不是抽象类定义，所以通常是优先选用接口，尽量少用抽象类。
- * 选择抽象类的时候通常是如下情况：需要定义子类的行为，又要为子类提供通用的功能。
+ * 行为模型应该总是通过接口而不是抽象类定义，所以通常是优先选用接口，尽量少用抽象类 Interfaces are usually preferred and abstract classes are used as little as possible。
+ * 选择抽象类的时候通常是如下情况：需要定义子类的行为 behaviour ，又要为子类提供通用的功能。
  * */
 
 /**
  * 普通类和抽象类有哪些区别
  * 普通类不能包含抽象方法，抽象类可以包含抽象方法。final 不能修饰抽象类
- * 抽象类不能直接实例化，普通类可以直接实例化。
+ * 抽象类不能直接实例化（可以通过匿名内部类），普通类可以直接实例化。
  * */
 
 /**
  * 为什么不能多继承
  * 超类和子类中都存在具有相同签名的方法时，就会出现问题，编译器无法确定调用哪个类方法。可以通过接口和内部类来
- * Java是不允许“实现多继承”，简称不允许“多继承”。但是Java支持“声明多继承”——Java的接口的多继承——一个类可以实现多个接口（“继承”了多个接口上的方法声明），
+ * Java是不允许“实现 implement 多继承”，简称不允许“多继承”。但是Java支持“声明 declare 多继承”——Java的接口的多继承——一个类可以实现多个接口（“继承”了多个接口上的方法声明），
  * 而一个接口可以继承多个接口（同样是“继承”了多个接口上的方法声明）。接口只允许有方法声明而不允许有实现
  * 从Java8开始，接口允许为方法提供“默认实现”了——默认方法（default method）。因而实质上Java 8的接口多继承其实也会涉及到实现多继承，
- * 在发现会继承多个默认方法实现并且没有override时报错，逼使用户显式override可能冲突的方法。
+ * 在发现会继承多个默认方法实现并且没有override annotation 时报错，逼使用户显式override可能冲突的方法。
  * */
 
 /**
  * new关键字，new创建对象实例（对象实例在堆内存中），对象引用指向对象实例（对象引用存放在栈内存中），一个实例可有多个引用，一个引用可有一个或0个实例
  * 成员变量和局部变量区别
- * 成员变量在类中方法外，存储在堆中，随对象创建，对象消失而消失，有默认初始值；局部变量在方法内，在栈内存中，方法被调用或执行时存在，执行完销毁，没有默认值，使用前必须赋值
+ * 成员变量在类中方法外，存储在堆 Heap 中，随对象创建，对象消失而消失，有默认初始值；局部变量在方法内，在栈内存 JVM stack 中，方法被调用或执行时存在，执行完销毁，没有默认值，使用前必须赋值
  * */
 
 /**
